@@ -41,19 +41,25 @@
 </head>
 <body>
   <h1>turkhali.net</h1>
-  <h2>#1</h2>
-  <img src="images/00001-example-rug.png" alt="#1" />
+  <h2>#halının gerçek adresi</h2>
+  <a href='cocuklar.html' id='previous'>önceki</a>
+  <a href='develer.html' id='next'>sonraki</a>
+  <img src="images/cokfazlakaplan.png" alt="cokfazlakaplan" />
   <button id="random-button">rastgele</button>
   <script>
     document.addEventListener("keydown", function (event) {
       if (event.keyCode === 37 && document.getElementById("previous")) {
         window.location.href = document.getElementById("previous").href;
       }
+      if (event.keyCode === 39 && document.getElementById("next")) {
+        window.location.href = document.getElementById("next").href;
+      }
     });
     const randomButton = document.getElementById("random-button");
     randomButton.addEventListener("click", function () {
-      const randomIdx = Math.floor(Math.random() * 1) + 1;
-      window.location.href = `${randomIdx}.html`;
+      const pages = ['americana', 'araplar', 'atlar', 'av', 'billiards', 'bobrossgibi', 'camiler', 'ciplakav', 'cocuklar', 'cokfazlakaplan', 'develer', 'diana', 'elvis', 'gemi', 'geyikler', 'isa', 'istanbul', 'kabe', 'kedikopek', 'matador', 'mutluatlar', 'nahllar', 'nehirdegeyikler', 'okuyanaslan', 'snow', 'tavuslar', 'ubuler'];
+      const randomPage = pages[Math.floor(Math.random() * pages.length)];
+      window.location.href = randomPage + ".html";
     });
   </script>
 </body>
