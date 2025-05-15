@@ -41,10 +41,10 @@
 </head>
 <body>
   <h1>turkhali.net</h1>
-  <h2>#bilardohalisi</h2>
-  <a href='bilardohalisi.html' id='previous'>önceki</a>
+  <h2>#kitabi</h2>
+  <a href='kitabi.html' id='previous'>önceki</a>
   
-  <img src="images/bilardohalisi.png" alt="bilardohalisi" />
+  <img src="images/kitabi.png" alt="kitabi" />
   <button id="random-button">rastgele</button>
   <script>
     document.addEventListener("keydown", function (event) {
@@ -57,7 +57,7 @@
     });
     const randomButton = document.getElementById("random-button");
     randomButton.addEventListener("click", function () {
-      const pages = ['americana', 'araplar', 'atlar', 'av', 'billiards', 'bobrossgibi', 'camiler', 'ciplakav', 'cocuklar', 'cokfazlakaplan', 'develer', 'diana', 'elvis', 'gemi', 'geyikler', 'isa', 'istanbul', 'kabe', 'kedikopek', 'matador', 'mutluatlar', 'nahllar', 'nehirdegeyikler', 'okuyanaslan', 'snow', 'tavuslar', 'ubuler', 'kissing', 'lacivert', 'bilardohalisi'];
+      const pages = ['americana', 'araplar', 'atlar', 'av', 'billiards', 'bobrossgibi', 'camiler', 'ciplakav', 'cocuklar', 'cokfazlakaplan', 'develer', 'diana', 'elvis', 'gemi', 'geyikler', 'isa', 'istanbul', 'kabe', 'kedikopek', 'matador', 'mutluatlar', 'nahllar', 'nehirdegeyikler', 'okuyanaslan', 'snow', 'tavuslar', 'ubuler', 'kissing', 'lacivert', 'bilardohalisi', 'kitabi'];
       const randomPage = pages[Math.floor(Math.random() * pages.length)];
       window.location.href = randomPage + ".html";
     });
