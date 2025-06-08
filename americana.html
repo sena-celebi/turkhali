@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>turkhali.net</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i&display=swap" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>americana</title>
   <style>
     body {
       background-color: #000;
       color: #fff;
       text-align: center;
-      font-family: "PT Serif", serif;
-      font-weight: bold;
+      font-family: 'PT Serif', serif;
       font-style: italic;
+      font-weight: bold;
     }
     img {
-      margin: 20px auto;
-      display: block;
       max-width: 100%;
       height: auto;
-      height: 650px;
+      margin-top: 20px;
     }
-    h1 { color: red; }
-    a { color: orange; padding: 0 5px; }
+    a {
+      color: orange;
+      margin: 0 10px;
+    }
     button {
-      border: none;
       background: none;
-      color: inherit;
+      border: none;
+      color: white;
       text-decoration: underline;
       cursor: pointer;
-    }
-    @media screen and (max-width: 768px) {
-      img {
-        width: 100vw;
-        height: 100%;
-        object-fit: contain;
-      }
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>turkhali.net</h1>
+  <h1 style="color:red;">turkhali.net</h1>
   <h2>#americana</h2>
-  
-  <a href='araplar.html' id='next'>sonraki</a>
-  <img src="images/americana.png" alt="americana" />
-  <button id="random-button">rastgele</button>
-  <script>
-    document.addEventListener("keydown", function (event) {
-      if (event.keyCode === 37 && document.getElementById("previous")) {
-        window.location.href = document.getElementById("previous").href;
-      }
-      if (event.keyCode === 39 && document.getElementById("next")) {
-        window.location.href = document.getElementById("next").href;
-      }
-    });
-    const randomButton = document.getElementById("random-button");
-    randomButton.addEventListener("click", function () {
-      const pages = ['americana', 'araplar', 'atlar', 'av', 'billiards', 'bobrossgibi', 'camiler', 'ciplakav', 'cocuklar', 'cokfazlakaplan', 'develer', 'diana', 'elvis', 'gemi', 'geyikler', 'isa', 'istanbul', 'kabe', 'kedikopek', 'matador', 'mutluatlar', 'nahllar', 'nehirdegeyikler', 'okuyanaslan', 'snow', 'tavuslar', 'ubuler', 'kissing', 'lacivert', 'bilardohalisi', 'kitabii', 'alii'];
-      window.location.href = randomPage + ".html";
-    });
-  </script>
+  <img src="images/americana.png" alt="americana">
+  <div id="nav"></div>
+  <script src="shared.js"></script>
+  <script>setupPage("americana");</script>
 </body>
 </html>

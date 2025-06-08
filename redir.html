@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <script>
+    async function goRandom() {
+      const response = await fetch('pages.json');
+      const pages = await response.json();
+      const pick = pages[Math.floor(Math.random() * pages.length)];
+      window.location.href = pick + ".html";
+    }
+    goRandom();
+  </script>
+</head>
+<body style="background:black; color:white;">
+  <p>Yönlendiriliyor...</p>
+</body>
+</html>
