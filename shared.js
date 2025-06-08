@@ -12,33 +12,6 @@ async function setupPage(currentPage) {
     <button onclick="goRandom()">rastgele</button>
   `;
 }
-<style>
-    body {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      font-family: 'PT Serif', serif;
-      font-style: italic;
-      font-weight: bold;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-top: 20px;
-    }
-    a {
-      color: orange;
-      margin: 0 10px;
-    }
-    button {
-      background: none;
-      border: none;
-      color: white;
-      text-decoration: underline;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-  </style>
 
 async function goRandom() {
   const response = await fetch('pages.json');
