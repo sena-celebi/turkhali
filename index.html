@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>alii</title>
+  <title>americana</title>
   <style>
     body {
       background-color: #000;
@@ -12,27 +12,23 @@
       font-family: 'PT Serif', serif;
       font-style: italic;
       font-weight: bold;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
     }
-
     img {
-      max-width: 90%;
+      max-width: 100%;
       height: auto;
-      margin: 20px 0;
-      border: 2px solid red;
-      border-radius: 10px;
+      margin-top: 20px;
     }
-
     a {
       color: orange;
-      font-size: 18px;
+      margin: 0 10px;
+    }
+    button {
+      background: none;
+      border: none;
+      color: white;
       text-decoration: underline;
-      margin-top: 10px;
+      cursor: pointer;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -42,22 +38,18 @@
   
   <img id="randomImage" src="" alt="alii">
   
-  <a id="imageLink" href="#" target="_blank">Görseli yeni sekmede aç</a>
+  <a id="rastgelehali" href="#" target="_blank">rastgele hali</a>
 
   <script>
     // Görsel adlarını buraya yaz
     const imageList = [
-      "alii.png",
-      "resim1.jpg",
-      "resim2.jpeg",
-      "gorsel3.webp",
-      "deneme4.png"
+      "alii",
+      "americana",
+      "sigara"
     ];
 
     const randomIndex = Math.floor(Math.random() * imageList.length);
-    const selectedImage = "images/" + imageList[randomIndex];
-
-    // <img> ve <a> güncelle
+    const selectedImage = imageList[randomIndex] + ".png";
     document.getElementById("randomImage").src = selectedImage;
     document.getElementById("imageLink").href = selectedImage;
   </script>
