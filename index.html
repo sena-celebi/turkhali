@@ -55,7 +55,7 @@
 
     function setRandomImage() {
       const randomIndex = Math.floor(Math.random() * imageList.length);
-      const selectedImage = imageList[randomIndex] + ".png";
+      const selectedImage = "images/" + imageList[randomIndex] + ".png";
       imageElement.src = selectedImage;
       linkElement.href = selectedImage;
     }
@@ -63,7 +63,7 @@
     setRandomImage();
 
     linkElement.addEventListener("click", function(event) {
-      event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+      event.preventDefault();
       setRandomImage();
     });
   </script>
