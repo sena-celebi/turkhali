@@ -41,17 +41,33 @@
   <a id="rastgelehali" href="#" target="_blank">rastgele hali</a>
 
   <script>
-    // Görsel adlarını buraya yaz
     const imageList = [
       "alii",
       "americana",
+      "atlar",
+      "araplar",
+      "av",
       "sigara"
     ];
 
-    const randomIndex = Math.floor(Math.random() * imageList.length);
-    const selectedImage = imageList[randomIndex] + ".png";
-    document.getElementById("randomImage").src = selectedImage;
-    document.getElementById("imageLink").href = selectedImage;
+    const imageElement = document.getElementById("randomImage");
+    const linkElement = document.getElementById("rastgelehali");
+
+    function setRandomImage() {
+      const randomIndex = Math.floor(Math.random() * imageList.length);
+      const selectedImage = imageList[randomIndex] + ".png";
+      imageElement.src = selectedImage;
+      linkElement.href = selectedImage;
+    }
+
+    // Sayfa ilk yüklendiğinde rastgele bir görsel ata
+    setRandomImage();
+
+    // Linke tıklanınca yeni bir rastgele görsel ata
+    linkElement.addEventListener("click", function(event) {
+      event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+      setRandomImage();
+    });
   </script>
 </body>
 </html>
