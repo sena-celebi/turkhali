@@ -60,10 +60,8 @@
       linkElement.href = selectedImage;
     }
 
-    // Sayfa ilk yüklendiğinde rastgele bir görsel ata
     setRandomImage();
 
-    // Linke tıklanınca yeni bir rastgele görsel ata
     linkElement.addEventListener("click", function(event) {
       event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
       setRandomImage();
