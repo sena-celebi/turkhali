@@ -41,31 +41,37 @@
   <a id="rastgelehali" href="#" target="_blank">rastgele hali</a>
 
   <script>
-    const imageList = [
-      "alii",
-      "americana",
-      "atlar",
-      "araplar",
-      "av",
-      "sigara"
-    ];
+    <script>
+  const imageList = [
+    "alii",
+    "americana",
+    "atlar",
+    "araplar",
+    "av",
+    "sigara"
+  ];
 
-    const imageElement = document.getElementById("randomImage");
-    const linkElement = document.getElementById("rastgelehali");
+  const imageElement = document.getElementById("randomImage");
+  const linkElement = document.getElementById("rastgelehali");
 
-    function setRandomImage() {
-      const randomIndex = Math.floor(Math.random() * imageList.length);
-      const selectedImage = "images/" + imageList[randomIndex] + ".png";
-      imageElement.src = selectedImage;
-      linkElement.href = selectedImage;
-    }
+  function setRandomImage() {
+    const randomIndex = Math.floor(Math.random() * imageList.length);
+    const imageName = imageList[randomIndex];
+    const selectedImage = "images/" + imageName + ".png";
+    imageElement.src = selectedImage;
 
+    // Linkin href'ini ve hash'ini güncelle
+    linkElement.href = selectedImage + "#" + imageName;
+    linkElement.textContent = "#" + imageName;
+  }
+
+  setRandomImage();
+
+  linkElement.addEventListener("click", function(event) {
+    event.preventDefault();
     setRandomImage();
-
-    linkElement.addEventListener("click", function(event) {
-      event.preventDefault();
-      setRandomImage();
-    });
+  });
+</script>
   </script>
 </body>
 </html>
