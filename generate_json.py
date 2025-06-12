@@ -1,12 +1,11 @@
+import os, json
 
-import os
-import json
-
-images_folder = 'images'
+image_dir = 'images'
 output_file = 'images.json'
 
-image_files = [f for f in os.listdir(images_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp'))]
-with open(output_file, 'w', encoding='utf-8') as f:
-    json.dump(image_files, f)
+valid = ['.png', '.jpg', '.jpeg', '.webp']
+images = [f for f in os.listdir(image_dir) if os.path.splitext(f)[1].lower() in valid]
+with open(output_file, 'w', encoding='utf-8') as out:
+    json.dump(images, out, indent=2)
 
-print(f"✔ Created {output_file} with {len(image_files)} images.")
+print(f"✔ {output_file} updated with {len(images)} image(s).")

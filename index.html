@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -39,7 +38,7 @@
 <body>
   <h1>turkhali.net</h1>
   <h2 id="image-title">#...</h2>
-  <img id="main-image" src="" alt="random image" />
+  <img id="main-image" src="" alt="..." />
   <div class="buttons">
     <button onclick="prevImage()">önceki</button>
     <button onclick="randomImage()">rastgele</button>
@@ -53,6 +52,7 @@
     async function loadImages() {
       const res = await fetch('images.json');
       images = await res.json();
+      if (images.length === 0) return;
       currentIndex = Math.floor(Math.random() * images.length);
       updateImage();
     }
