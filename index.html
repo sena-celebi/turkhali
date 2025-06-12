@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>turkhali.net</title>
   <style>
     body {
@@ -16,21 +16,15 @@
       margin: 0;
       padding: 20px;
     }
-    h1 {
-      color: red;
-    }
-    h2 {
-      margin-top: 10px;
-    }
+    h1 { color: red; }
+    h2 { margin-top: 10px; }
     img {
       max-width: 90vw;
       max-height: 70vh;
       margin: 20px auto;
       display: block;
     }
-    .buttons {
-      margin-top: 20px;
-    }
+    .buttons { margin-top: 20px; }
     button {
       background: none;
       border: none;
@@ -44,54 +38,56 @@
 </head>
 <body>
   <h1>turkhali.net</h1>
-  <h2 id="image-title">#başlık</h2>
-  <img id="main-image" src="" alt="image">
+  <h2 id="image-title">#...</h2>
+  <img id="main-image" src="" alt="random image" />
   <div class="buttons">
-    <button onclick="showPrevious()">önceki</button>
-    <button onclick="showRandom()">rastgele</button>
-    <button onclick="showNext()">sonraki</button>
+    <button onclick="prevImage()">önceki</button>
+    <button onclick="randomImage()">rastgele</button>
+    <button onclick="nextImage()">sonraki</button>
   </div>
 
   <script>
-    const images = [
-      { file: "atlar.png", title: "#atlar" },
-      { file: "araplar.png", title: "#araplar" },
-      { file: "av.png", title: "#av" }
-    ];
+    let images = [];
+    let currentIndex = 0;
 
-    let currentIndex = Math.floor(Math.random() * images.length);
-
-    function updateView() {
-      const image = images[currentIndex];
-      document.getElementById("main-image").src = "images/" + image.file;
-      document.getElementById("image-title").textContent = image.title;
+    async function loadImages() {
+      const res = await fetch('images.json');
+      images = await res.json();
+      currentIndex = Math.floor(Math.random() * images.length);
+      updateImage();
     }
 
-    function showPrevious() {
+    function updateImage() {
+      const file = images[currentIndex];
+      document.getElementById("main-image").src = "images/" + file;
+      document.getElementById("image-title").textContent = "#" + file.split('.')[0];
+    }
+
+    function prevImage() {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateView();
+      updateImage();
     }
 
-    function showNext() {
+    function nextImage() {
       currentIndex = (currentIndex + 1) % images.length;
-      updateView();
+      updateImage();
     }
 
-    function showRandom() {
-      let nextIndex;
+    function randomImage() {
+      let newIndex;
       do {
-        nextIndex = Math.floor(Math.random() * images.length);
-      } while (nextIndex === currentIndex);
-      currentIndex = nextIndex;
-      updateView();
+        newIndex = Math.floor(Math.random() * images.length);
+      } while (newIndex === currentIndex);
+      currentIndex = newIndex;
+      updateImage();
     }
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") showPrevious();
-      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
     });
 
-    updateView();
+    loadImages();
   </script>
 </body>
 </html>
