@@ -1,6 +1,97 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0;url=redir.html" />
-  </head>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>turkhali.net</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+      font-family: 'PT Serif', serif;
+      font-style: italic;
+      font-weight: bold;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: red;
+    }
+    h2 {
+      margin-top: 10px;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 70vh;
+      margin: 20px auto;
+      display: block;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      background: none;
+      border: none;
+      color: orange;
+      font-size: 18px;
+      text-decoration: underline;
+      margin: 0 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>turkhali.net</h1>
+  <h2 id="image-title">#başlık</h2>
+  <img id="main-image" src="" alt="image">
+  <div class="buttons">
+    <button onclick="showPrevious()">önceki</button>
+    <button onclick="showRandom()">rastgele</button>
+    <button onclick="showNext()">sonraki</button>
+  </div>
+
+  <script>
+    const images = [
+      { file: "atlar.png", title: "#atlar" },
+      { file: "araplar.png", title: "#araplar" },
+      { file: "av.png", title: "#av" }
+    ];
+
+    let currentIndex = Math.floor(Math.random() * images.length);
+
+    function updateView() {
+      const image = images[currentIndex];
+      document.getElementById("main-image").src = "images/" + image.file;
+      document.getElementById("image-title").textContent = image.title;
+    }
+
+    function showPrevious() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateView();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateView();
+    }
+
+    function showRandom() {
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * images.length);
+      } while (nextIndex === currentIndex);
+      currentIndex = nextIndex;
+      updateView();
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") showPrevious();
+      if (e.key === "ArrowRight") showNext();
+    });
+
+    updateView();
+  </script>
+</body>
 </html>
