@@ -8,7 +8,9 @@
     <style>
         body { margin: 0; padding: 0; }
         #map { width: 100vw; height: 100vh; }
-        .popup-img { width: 100%; max-width: 250px; border-radius: 8px; margin-top: 10px; }
+        .gallery-popup { max-height: 300px; overflow-y: auto; text-align: center; }
+        .gallery-popup img { width: 100%; max-width: 250px; border-radius: 8px; margin-bottom: 10px; }
+        .gallery-popup h3 { margin-top: 0; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -17,21 +19,42 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Haritayı Torino merkezli açıyoruz
-        var map = L.map('map').setView([45.0703, 7.6869], 13);
+        var map = L.map('map').setView([45.0703, 7.6869], 14);
 
-        // Google Haritalar görünümünü çekiyoruz
         L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             attribution: '© Google Maps'
         }).addTo(map);
 
-        // 1. Fotoğraf için işaretçi (Örnek konum)
-        var marker1 = L.marker([45.0750, 7.6800]).addTo(map);
-        marker1.bindPopup('<b>Via Edoardo Calvo</b><br><img src="1.jpg" class="popup-img">');
+        // --- 1. SOKAK: Via Edoardo Calvo ---
+        var sokak1Koordinatlar = [
+            [45.0682, 7.6895], // Sokağın bir ucu
+            [45.0675, 7.6890]  // Sokağın diğer ucu
+        ];
 
-        // 2. Fotoğraf için işaretçi (Örnek konum)
-        var marker2 = L.marker([45.0680, 7.6900]).addTo(map);
-        marker2.bindPopup('<b>Başka bir sokak</b><br><img src="2.jpg" class="popup-img">');
+        var sokak1Cizgi = L.polyline(sokak1Koordinatlar, {
+            color: 'red',       
+            weight: 6,          
+            opacity: 0.7        
+        }).addTo(map);
+
+        sokak1Cizgi.on('mouseover', function(e) { this.setStyle({ color: 'yellow', weight: 8 }); });
+        sokak1Cizgi.on('mouseout', function(e) { this.setStyle({ color: 'red', weight: 6 }); });
+
+        // 8 fotoğrafın tamamı burada
+        var sokak1Galeri = `
+            <div class="gallery-popup">
+                <h3>Via Edoardo Calvo Graffitileri</h3>
+                <img src="1.jpg" alt="Graffiti 1">
+                <img src="2.jpg" alt="Graffiti 2">
+                <img src="3.jpg" alt="Graffiti 3">
+                <img src="4.jpg" alt="Graffiti 4">
+                <img src="5.jpg" alt="Graffiti 5">
+                <img src="6.jpg" alt="Graffiti 6">
+                <img src="7.jpg" alt="Graffiti 7">
+                <img src="8.jpg" alt="Graffiti 8">
+            </div>
+        `;
+        sokak1Cizgi.bindPopup(sokak1Galeri);
 
     </script>
 </body>
